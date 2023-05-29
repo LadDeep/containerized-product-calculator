@@ -1,0 +1,24 @@
+services:
+  container-1-microservice:
+    image: deeplad/container-1:1.0
+    ports:
+      - 6000:6000
+    volumes:
+      - './:/app/myDir'
+    depends_on:
+      - container-2-microservice
+    container_name: container-1-microservice
+    networks:
+      - inter-container-net
+
+  container-2-microservice:
+    image: deeplad/container-2:1.0
+    volumes:
+      - './:/app/myDir'
+    container_name: container-2-microservice
+    networks:
+      - inter-container-net
+
+networks:
+  inter-container-net:
+    driver: bridge

@@ -1,8 +1,8 @@
 import express from 'express';
-import {calculate} from '../controllers/index.js'
+import {validateAndcalculate} from '../controllers/index.js'
 
 const router = express.Router();
 
-router.post('/', calculate);
+router.post('/', validateAndcalculate);
 
 export default router;
